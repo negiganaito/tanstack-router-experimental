@@ -1,0 +1,8 @@
+import type { NavigateOptions } from './link.js';
+import type { RoutePaths, RoutePathsAutoComplete } from './routeInfo.js';
+import type { AnyRouter, RegisteredRouter } from './router.js';
+export type UseNavigateResult<TDefaultFrom extends string> = <TTo extends string, TRouter extends AnyRouter = RegisteredRouter, TFrom extends RoutePaths<TRouter['routeTree']> | string = TDefaultFrom, TMaskFrom extends RoutePaths<TRouter['routeTree']> | string = TFrom, TMaskTo extends string = ''>({ from, ...rest }: NavigateOptions<TRouter, TFrom, TTo, TMaskFrom, TMaskTo>) => Promise<void>;
+export declare function useNavigate<TDefaultFrom extends string = string>(_defaultOpts?: {
+    from?: RoutePathsAutoComplete<RegisteredRouter['routeTree'], TDefaultFrom>;
+}): UseNavigateResult<TDefaultFrom>;
+export declare function Navigate<TRouter extends AnyRouter = RegisteredRouter, TFrom extends RoutePaths<TRouter['routeTree']> | string = string, TTo extends string = '', TMaskFrom extends RoutePaths<TRouter['routeTree']> | string = TFrom, TMaskTo extends string = ''>(props: NavigateOptions<TRouter, TFrom, TTo, TMaskFrom, TMaskTo>): null;
